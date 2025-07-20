@@ -1,0 +1,21 @@
+
+
+**How to run**
+Modify MySQL connection string  (host,user,passwd,database) inside llm_service.py and EmbeddingScript.py files
+Insert your HuggingFace token and Gemini genai API key in settings.py file.
+Now run the EmbeddingScript to create the embeddings from word file and store to MySQl databse
+run the server
+test on http://127.0.0.1:8000/app1/
+
+
+**Required Libraries**
+
+
+
+Workflow:
+-> Fetch data from file -> create embeddings using hugging face sentence transformers -> pass embeddings to MySQL database.
+-> Take input query from frontend and create embeddings
+-> Retrieve embeddings from the database and use cosine similarity to match and fetch the most similar embedding
+-> If the similarity score is < 0.3 pass nothing
+-> Pass the question, retrieved content and last five responses to the Gemini API
+-> Response returned from Gemini diplayed back to frontend
